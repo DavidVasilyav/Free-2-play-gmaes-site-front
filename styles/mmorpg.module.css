@@ -1,0 +1,10 @@
+.table_row {
+    border-bottom: 2px solid #22A39F;
+    border-top: 2px solid #22A39F;
+    color: #fff;
+}
+
+.all_cells {
+    background-color: #434242;
+    color: #F3EFE0;
+}
