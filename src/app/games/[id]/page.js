@@ -47,9 +47,10 @@ async function gameDetails({ params }) {
             sx={{ mt: 2, display: { md: "flex" }, flexDirection: {md:'column'} }}
           >
             <Box sx={{ textAlign: "center" }}>
-              <Box sx={{ textDecoration: "underline", textAlign: "center" }}>
+              <Box sx={{ textDecoration: "underline", textAlign: "center", color:'#2cb67d' }}>
                 Game info:
               </Box>
+              <Box color={'#fffffe'}>
               <ul>
                 <li>Genre: {game.genre}.</li>
                 <li>Platform: {game.platform}.</li>
@@ -61,11 +62,14 @@ async function gameDetails({ params }) {
                   </Box>
                 </li>
               </ul>
+              </Box>
             </Box>
             <Box>
-              <Box sx={{ textDecoration: "underline", textAlign: "center" }}>
+              <Box sx={{ textDecoration: "underline", textAlign: "center", color:'#2cb67d' }}>
                 Minimum system requirements:
               </Box>
+              <Box color={'#fffffe'}>
+
               <ul>
                 <li>OS: {game.minimum_system_requirements.os}.</li>
                 <li>{game.minimum_system_requirements.processor}.</li>
@@ -73,13 +77,14 @@ async function gameDetails({ params }) {
                 <li>C{game.minimum_system_requirements.graphics}.</li>
                 <li>Storage: {game.minimum_system_requirements.storage}.</li>
               </ul>
+              </Box>
             </Box>
           </Box>
         </Container>
         <Box className={'description'} sx={{ width: "100%", }}>
           <Container sx={{ borderTop: { md: "1px solid white" }, mb: 1, display:'flex', flexDirection: 'column',  alignItems:' center' }}>
-            <Box fontSize={{ xs: 20, md: 30 }}>Description:</Box>
-            <Box fontSize={{ xs: 16, md: 20 }}>{game.description}</Box>
+            <Box sx={{color: '#2cb67d'}} fontSize={{ xs: 20, md: 30 }}>Description:</Box>
+            <Box fontSize={{ xs: 16, md: 20 }} color={'#fffffe'}>{game.description}</Box>
             <Box
             sx={{
               border: "1px solid white",

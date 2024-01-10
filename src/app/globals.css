@@ -25,9 +25,9 @@ body {
     )
     rgb(var(--background-start-rgb));
     background: #242629;
+    color: white;
 }
 
 ::-webkit-scrollbar {
   display: none;
 }
-
