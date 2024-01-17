@@ -11,9 +11,10 @@ import loginBackGround2 from "public/img/loginBackGround2.jpg";
 import Alert from "@mui/material/Alert";
 import Link from "next/link";
 import { FormWrapper } from "styles/login.style";
+import ChangeDarkLightColors from "@/utils/ChangeDarkLightColors";
+
 export default function Login() {
   const userAuth = useSelector((state) => state.userAuth);
-  console.log(userAuth);
   const dispatch = useDispatch();
   const router = useRouter();
   const [user, setUser] = useState(userAuth);
@@ -68,7 +69,6 @@ export default function Login() {
 
   useEffect(() => {
     if (userAuth.error) {
-      console.log(123);
       setLoginAlert(true);
       setLoginAlertMsg(userAuth.error);
     }
@@ -87,7 +87,6 @@ export default function Login() {
         sx={{
           height: "80vh",
           display: "flex",
-          borderBottom: "2px solid #fffe",
         }}
       >
         <Box
@@ -108,7 +107,6 @@ export default function Login() {
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
-            // bgcolor: "rgb(0,0,0, 0.5)",
           }}
         >
           <form onSubmit={handleLogin}>
@@ -187,7 +185,8 @@ export default function Login() {
             float: "right",
             width: "60%",
             height: "100%",
-            borderLeft: "3px solid #2cb67d",
+            borderLeft: "3px solid",
+            borderColor: (() =>ChangeDarkLightColors('#232323', '#EFF0F3')),
           }}
         >
           <Box
@@ -201,8 +200,8 @@ export default function Login() {
               alignItems: "center",
               textAlign: "center",
               bgcolor: "rgb(0, 0, 0, 0.7)",
-              borderRight: "2px solid #2cb67d",
-              borderLeft: "2px solid #2cb67d",
+              borderRight: "2px solid #ff8906",
+              borderLeft: "2px solid #ff8906",
             }}
           >
             <Box
@@ -229,7 +228,7 @@ export default function Login() {
                   transition: "1s",
                   display: "flex",
                   justifyContent: "center",
-                  textDecoration: "underline #2cb67d",
+                  textDecoration: "underline #ff8906",
                   fontSize: 20,
                   pb: 5,
                   "&:hover": {

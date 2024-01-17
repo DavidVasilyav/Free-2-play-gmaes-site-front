@@ -1,17 +1,17 @@
 import styled from '@emotion/styled';
 import Button from '@mui/material/Button';
+import ChangeDarkLightColors from "utils/ChangeDarkLightColors";
+console.log(ChangeDarkLightColors);
 
 export const GlobalButtonStyle = styled(Button)({
-      // backgroundColor: '',
-      border: '2px solid #2cb67d',
-      color: '#fffffe',
-      fontSize: '10px',
+      border: '2px solid #ff8906',
+      color: (() => ChangeDarkLightColors('#010101', '')),
+      fontSize: '12px',
       padding: 1,
-      backgroundColor: '#010101',
       transition: '0.5s',
       '&:hover': {
             color: '#010101',
-            backgroundColor: '#2cb67d',
+            backgroundColor: '#ff8906',
             fontSize: '9px',
 
       }

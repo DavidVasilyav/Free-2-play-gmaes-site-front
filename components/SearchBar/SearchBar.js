@@ -125,7 +125,7 @@ export default function SearchBar({ listFromApi, searchResult }) {
           gap: 1,
           mb: 1,
           bgcolor: '#242629',
-          borderBottom: '2px solid #fffffe'
+          borderBottom: '2px solid #ff8906'
          
         }}>
           <GlobalTextField
@@ -137,7 +137,7 @@ export default function SearchBar({ listFromApi, searchResult }) {
           <Box
            sx={{
             '& .MuiSvgIcon-root': {
-              color: '#2cb67d',
+              color: '#ff8906',
              }
            }}
           >

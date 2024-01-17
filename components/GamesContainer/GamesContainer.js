@@ -11,7 +11,7 @@ import Link from "next/link";
 import Image from 'next/image'
 import { addGameToFavorite } from "../../services/addGameToFavoriteService";
 import { useDispatch, useSelector } from "react-redux";
-
+import changeDarkLightColors from "utils/ChangeDarkLightColors";
 export default function GamesContainer({ gamesList }) {
   const [disableBtn, setDisableBtn] = useState(true)
   const addGamesToProfileFavorite = (e) => {
@@ -39,7 +39,7 @@ export default function GamesContainer({ gamesList }) {
       container
       spacing={2}
       sx={{
-        bgcolor: '#242629',
+        bgcolor: changeDarkLightColors(),
         display: 'flex',
         justifyContent:'center',
         alignItems:'center'
@@ -52,10 +52,10 @@ export default function GamesContainer({ gamesList }) {
           alignItems:'center'
         }}>
           <Card
+          raised={true}
             key={game.id}
             sx={{
-              backgroundColor: "#16161a",
-              border: '5px solid #010101',
+              backgroundColor: changeDarkLightColors('#0f0e17', '#fffffe'),
               maxWidth: 345,
               height: 600,
               display: "flex",
@@ -69,7 +69,7 @@ export default function GamesContainer({ gamesList }) {
               <Box
                 sx={{
                   height: 230,
-                  borderBottom: "3px solid #2cb67d",
+                  borderBottom: "3px solid #ff8e3c",
                 }}
                 >
                 <Image
@@ -85,9 +85,9 @@ export default function GamesContainer({ gamesList }) {
                   gutterBottom
                   sx={{
                     height: 20,
-                    color: "#fffffe",
+                    color: changeDarkLightColors('#fffffe', '#0f0e17'),
                     "&:hover": {
-                      color: "#2cb67d",
+                      color: "#ff8e3c",
                     },
                   }}
                   variant="h5"
@@ -97,27 +97,27 @@ export default function GamesContainer({ gamesList }) {
                 </Typography>
               </Link>
              
-              <Typography variant="body1" sx={{ color: "#2cb67d", height: 80 }}>
+              <Typography variant="body1" sx={{ color: changeDarkLightColors('#a7a9be', '#2e2f3e'), height: 80 }}>
                 {game.short_description}
               </Typography>
              <Box sx={{display:'flex',flexDirection:'column', height: 70}}>
 
               <Typography 
               variant="caption"
-              sx={{ color: "#94a1b2"}}
+              sx={{ color: changeDarkLightColors('#a7a9be','#2e2f3e')}}
               >
                 Release Date: {game.release_date}
               </Typography>
               <Typography 
               variant="caption"
-              sx={{ color: "#94a1b2" }}
+              sx={{ color: changeDarkLightColors('#a7a9be','#2e2f3e') }}
               >
                  Developer: {game.developer}
               </Typography>
                 </Box>
             <CardActions>
               {disableBtn ? <>
-                <GlobalButton text="Game Card" href={`/games/${game.id}`} />
+                <GlobalButton sx={{bgcolor: (() => changeDarkLightColors('#2e2f3e', '#FFFFFE')) , color: (() => changeDarkLightColors('#fffffe', '#2e2f3e'))}} text="Game Card" href={`/games/${game.id}`} />
               </> : 
               <>
                 <GlobalButton text="Game Card" href={`/games/${game.id}`} />

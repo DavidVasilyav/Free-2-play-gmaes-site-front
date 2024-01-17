@@ -21,10 +21,10 @@ export default function GlobalTextField({
 {
   return (
       <GlobalTextFieldStyled
-      InputLabelProps={{style : {color : '#2cb67d'} }}
+      InputLabelProps={{style : {color : '#ff8906'} }}
       sx={{
         "& .MuiInputBase-input":{ backgroundColor: '#16161a', color: '#fffffe', border: 'none', borderRadius: 1 },
-        "& .MuiInputLabel-root": {color: '#2cb67d'},
+        "& .MuiInputLabel-root": {color: '#ff8906'},
         "& .MuiOutlinedInput-root": {
           color: 'black',
           '&.Mui-focused input': {
@@ -32,7 +32,7 @@ export default function GlobalTextField({
           },
           '&.Mui-focused fieldset': {
             color: '#fffffe',
-            borderColor: '#2cb67d',
+            borderColor: '#ff8906',
           },
         },
         "& .label.Mui-focused": {

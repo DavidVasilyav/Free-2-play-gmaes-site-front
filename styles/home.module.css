@@ -2,13 +2,13 @@
   background-position: center;
   background-repeat: no-repeat; 
   background-size: cover;
-  transition: 300ms;
+  transition: 0.2s;
 
 
 }
 
 .paper_category:hover {
-  border: 3px solid #2cb67d;
+  border: 3px solid #ff8e3c;
 
 }
 
@@ -24,11 +24,10 @@
 
 .category_text:hover {
   background-color: rgb(0, 0, 0);
-  color: #2cb67d;
+  color: #ff8e3c;
 }
 
 .main_body {
-background-color: black;
 }
 .bg_home{
   background-image: url('../public/img/HomeBackground.jpg');

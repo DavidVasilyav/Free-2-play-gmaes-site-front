@@ -14,7 +14,7 @@ body {
   color: #fff;
   font-weight: 500;
   max-height: 100vh;
-  border: 4px solid #2cb67d;
+  border: 4px solid #fffffe;
   border-radius: 10px;
   display: table-cell;
 }
@@ -50,7 +50,7 @@ body {
 }
 
 .dot.active {
-  background: #2cb67d;
+  background: #ff8e3c;
 }
 
 .arrow {
@@ -63,7 +63,7 @@ body {
   fill: #fff;
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.693);
-  fill: #2cb67d;
+  fill: #ff8e3c;
   border-radius: 10px;
   margin: 5px;
 }
@@ -76,7 +76,7 @@ body {
 .arrow--right {
   left: auto;
   right: 5px;
-  color: #2cb67d;
+  color: #ff8e3c;
 }
 
 .arrow--disabled {

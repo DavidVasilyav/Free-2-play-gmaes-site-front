@@ -9,17 +9,19 @@ import {
   Typography,
   MenuItem,
   Box,
+  Button
 } from "@mui/material";
 import BlurOnIcon from "@mui/icons-material/BlurOn";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  NavBarIndcitor,
-} from "./navbar.style";
+import { NavBarIndcitor } from "./navbar.style";
 import styles from "./navbar.module.css";
 import { logoutReducer } from "redux/reducers/userAuthReducer";
-import NavBarDropMenu from './NavBarDropMenu'
-import logo from "../../../public/img/logo.png"
+import { setTheme } from "redux/reducers/setDarkLightMode";
+import NavBarDropMenu from "./NavBarDropMenu";
+import logo from "../../../public/img/logo.png";
+import ChangeDarkLightColors from "utils/ChangeDarkLightColors";
+import DarkLightBtn from "components/DarkLightBtn/DarkLightBtn";
 const pages = [
   { name: "Home", href: "/", icon: `${(<BlurOnIcon />)}` },
   { name: "Shooter", href: "/games/shooter" },
@@ -34,6 +36,7 @@ function Navbar({}) {
   const [menuItem, setMenuItem] = useState("");
   const [changeIcon, setChangeIcon] = useState(Boolean);
   const userAuth = useSelector((state) => state.userAuth);
+
   const dispatch = useDispatch();
   const router = useRouter();
   const pathName = usePathname();
@@ -50,14 +53,17 @@ function Navbar({}) {
     dispatch(logoutReducer());
     router.push("/");
   };
-
+  
   useEffect(() => {
     const userFromLocal = JSON.parse(localStorage.getItem("user"));
     setUser(userFromLocal);
     checkIfUserLoggedIn();
   }, [userAuth]);
   return (
-    <AppBar sx={{ position: "sticky", bgcolor: '#16161a' }} className={styles.main_nav}>
+    <AppBar
+      sx={{ position: "sticky", bgcolor: ChangeDarkLightColors('#0D0D0D') }}
+      className={styles.main_nav}
+    >
       <Container
         maxWidth="xl"
         sx={{
@@ -75,10 +81,10 @@ function Navbar({}) {
             justifyContent: "center",
             alignItems: "center",
             right: 0,
-            bottom: 0
+            bottom: 0,
           }}
         >
-          <NavBarDropMenu  />
+          <NavBarDropMenu />
           <Typography
             variant="h6"
             noWrap
@@ -86,12 +92,11 @@ function Navbar({}) {
             href="/"
             sx={{
               position: { xs: "relative", sm: "absolute" },
-              left: { xs: "0px",},
+              left: { xs: "0px" },
               p: 1,
               display: "flex",
               fontFamily: "monospace",
               fontWeight: 700,
-              color: "#fffffe",
               textDecoration: "none",
             }}
           >
@@ -104,6 +109,10 @@ function Navbar({}) {
               gap: 1,
               position: "absolute",
               left: 120,
+              bgcolor: ChangeDarkLightColors("#232323", "#EFF0F3"),
+              ":hover": {
+                bgcolor: ChangeDarkLightColors("#232323", "#EFF0F3"),
+              },
             }}
           >
             {pages.map((page) => (
@@ -111,15 +120,14 @@ function Navbar({}) {
                 <Link href={page.href}>
                   <Box
                     sx={{
-                      color: "#fffffe",
+                      color: ChangeDarkLightColors("#EFF0F3", "#000"),
                       fontSize: { xs: 15, md: 19 },
                       transition: "0.8s",
                       borderRadius: 1,
                       "&:hover": {
-                        textDecoration: "underline",
-                        textDecorationColor: "#2cb67d",
-                        bgcolor: "#fffffe",
-                        color: "#16161a",
+                        textDecoration: "underline 2px",
+                        textDecorationColor: "#ff8906",
+                        color: ChangeDarkLightColors("#fff", "#000"),
                       },
                     }}
                   >
@@ -131,6 +139,7 @@ function Navbar({}) {
           </MenuItem>
         </Toolbar>
         <MenuItem
+        disableRipple
           sx={{
             // position: "block",
             float: "right",
@@ -138,8 +147,12 @@ function Navbar({}) {
             position: "absolute",
             right: 0,
             // top: { xs: 10, sm: 5, md: 5 },
+            "&:hover": {
+              bgcolor: ChangeDarkLightColors("#232323", "#EFF0F3"),
+            },
           }}
         >
+          <DarkLightBtn />
           {userInfo ? (
             <Box
               sx={{
@@ -148,49 +161,56 @@ function Navbar({}) {
                 alignItems: "center",
                 p: 1,
                 borderRadius: 1,
+                bgcolor: "#ff8906",
+                height: 25,
+                fontSize: { sm: 12, md: 20 },
               }}
             >
-              <Typography
+              <Box
                 sx={{
-                  fontSize: { sm: 12, md: 20 },
+                  color: "#fffffe",
                 }}
               >
                 Welcome:
-              </Typography>
+              </Box>
               <Link href={"/profile"}>
                 <Typography
                   sx={{
                     transition: "0.5s",
                     borderRadius: 1,
                     color: "white",
-                    fontSize: { sm: 12, md: 20 },
                     display: "block",
+                    fontSize: { sm: 12, md: 20 },
+
                     "&:hover": {
-                      bgcolor: "#2cb67d",
-                      color: "#16161a",
+                      color: "#232323",
                     },
                   }}
                 >
                   {user.username}
                 </Typography>
               </Link>
+              <Box
+                sx={{ color: "#fffffe", display: { xs: "none", sm: "block" } }}
+              >
+                /
+              </Box>
               <Typography
                 onClick={logoutAndRedirected}
                 sx={{
                   display: { xs: "none", sm: "block" },
                   borderRadius: 1,
-                  fontSize: { sm: 12, md: 20 },
                   transition: "0.5s",
-                  color: "red",
-                  bgcolor: "#16161a",
+                  color: "#fffffe",
+                  fontSize: { sm: 12, md: 20 },
+
                   "&:hover": {
-                    bgcolor: "red",
-                    color: "#16161a",
+                    color: "#232323",
                     textDecoration: "underline",
                   },
                 }}
               >
-               logout
+                Log-out
               </Typography>
             </Box>
           ) : (
@@ -206,7 +226,7 @@ function Navbar({}) {
                     transition: "0.8s",
                     "&:hover": {
                       textDecoration: "underline",
-                      textDecorationColor: "#2cb67d",
+                      textDecorationColor: "#ff8906",
                       borderRadius: 1,
                     },
                   }}
@@ -221,7 +241,7 @@ function Navbar({}) {
                     "&:hover": {
                       transition: "0.8s",
                       textDecoration: "underline",
-                      textDecorationColor: "#2cb67d",
+                      textDecorationColor: "#ff8906",
                       borderRadius: 1,
                     },
                   }}

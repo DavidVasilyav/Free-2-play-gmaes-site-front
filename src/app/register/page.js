@@ -154,7 +154,7 @@ export default function Register() {
               label={"password"}
               error={errInput.password}
               required={true}
-              InputLabelProps={{ style: { color: "#2cb67d" } }}
+              InputLabelProps={{ style: { color: "#ff8906" } }}
               sx={{
                 width: 222.2,
                 bgcolor: "#16161a",
@@ -164,7 +164,7 @@ export default function Register() {
                   border: "none",
                   borderRadius: 1,
                 },
-                "& .MuiInputLabel-root": { color: "#2cb67d" },
+                "& .MuiInputLabel-root": { color: "#ff8906" },
                 "& .MuiOutlinedInput-root": {
                   color: "black",
                   "&.Mui-focused input": {
@@ -172,7 +172,7 @@ export default function Register() {
                   },
                   "&.Mui-focused fieldset": {
                     color: "#fffffe",
-                    borderColor: "#2cb67d",
+                    borderColor: "#ff8906",
                   },
                 },
                 "& .label.Mui-focused": {
@@ -207,7 +207,7 @@ export default function Register() {
               label={"confirm password"}
               error={errInput.confirmPassword}
               required={true}
-              InputLabelProps={{ style: { color: "#2cb67d" } }}
+              InputLabelProps={{ style: { color: "#ff8906" } }}
               sx={{
                 width: 222.2,
                 bgcolor: "#16161a",
@@ -217,7 +217,7 @@ export default function Register() {
                   border: "none",
                   borderRadius: 1,
                 },
-                "& .MuiInputLabel-root": { color: "#2cb67d" },
+                "& .MuiInputLabel-root": { color: "#ff8906" },
                 "& .MuiOutlinedInput-root": {
                   color: "black",
                   "&.Mui-focused input": {
@@ -225,7 +225,7 @@ export default function Register() {
                   },
                   "&.Mui-focused fieldset": {
                     color: "#fffffe",
-                    borderColor: "#2cb67d",
+                    borderColor: "#ff8906",
                   },
                 },
                 "& .label.Mui-focused": {

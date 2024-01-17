@@ -10,6 +10,6 @@ export const FormWrapper = styled.div`
     background-color: rgb(0, 0, 0, 0.5);
     padding: 5px;
     border: ${({ active }) => 
-    active ? '2px solid red': '2px solid #fffffe'
+    active ? '2px solid red': '2px solid #ff8906'
 };
 `

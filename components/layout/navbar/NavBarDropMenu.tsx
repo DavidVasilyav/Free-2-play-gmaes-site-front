@@ -8,6 +8,7 @@ import { Typography, Box, Button, Fade } from "@mui/material";
 import DensityMediumIcon from "@mui/icons-material/DensityMedium";
 import CircleIcon from "@mui/icons-material/Circle";
 import { NavBarMenuIconIndictor, ChangeIconColor } from "./navbar.style";
+import ChangeDarkLightColors from "utils/ChangeDarkLightColors";
 const pages = [
   { name: "Home", href: "/" },
   { name: "Shooter", href: "/games/shooter" },
@@ -52,11 +53,11 @@ export default function NavBarDropMenu() {
     >
       <Button
         sx={{
-          color: "#2cb67d",
+          color: "#ff8906",
           transition: "1s",
           "&:hover": {
             rotate: "90deg",
-            color: 'white'
+            color: ChangeDarkLightColors('#EFF0F3','#000')
           },
         }}
         onClick={toggleDropMenu}
@@ -72,12 +73,12 @@ export default function NavBarDropMenu() {
                 p: 1,
                 position: "absolute",
                 top: "5vh",
-                bgcolor: "#000000",
-                border: "2px solid #fffffe",
+                border: '2px solid #ff8906',
                 borderRadius: 2,
                 maxHeight: "400px",
                 minHeight: "300px",
                 width: "fill",
+                bgcolor: (() => ChangeDarkLightColors('#232323', '#EFF0F3')),
               }}
             >
               {pages.map((page) => (
@@ -98,12 +99,9 @@ export default function NavBarDropMenu() {
                       m: 1,
                       gap: 1,
                       "&:hover": {
-                        bgcolor: "#2cb67d",
+                        textDecoration: `underline #ff8906 2px`,
+                        color: (() =>(ChangeDarkLightColors('#fffffe')))
                       },
-                      "&:active ":{
-                        bgcolor: "#2cb67d",
-
-                      }
                     }}
                   >
                     <>

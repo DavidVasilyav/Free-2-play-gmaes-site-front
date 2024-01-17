@@ -8,6 +8,8 @@ import mmorpgBackGround from "../../public/img/MmorpgBackGroundPaper.jpg";
 import shooterBackGround from "../../public/img/ShoterBackgroundPaper.jpg";
 import survivialBackGround from "../../public/img/SurvivalBackgroundPaper.jpg";
 import HomePageSlider from "components/homePageSlider/HomePageSlider";
+import changeDarkLightColors from 'utils/ChangeDarkLightColors'
+
 const pages = [
   {
     name: "Shooter",
@@ -25,13 +27,13 @@ export default function Home() {
   return (
     <>
       <main>
+      
         <Box
           sx={{
             position: "relative",
             p: 1,
             textAlign: "center",
-            backgroundColor: '#242629',
-            // backgroundImage: `url(${mainBackground.src})`,
+            backgroundImage: `url(${mainBackground.src})`,
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
             backgroundPosition: "center",
@@ -40,6 +42,7 @@ export default function Home() {
             justifyContent: "center",
             flexDirection: "column",
             minHeight: "80vh",
+            color: '#fffffe'
           }}
         >
           <Box>
@@ -49,15 +52,18 @@ export default function Home() {
           </Box>
           <HomePageSlider />
 
-          <Typography
-            variant="h5"
+          <Box
             sx={{
+              fontSize: 30,
+              position: 'relative',
+              top: 7,
               textDecoration: "underline",
-              textDecorationColor: "#2cb67d",
+              textDecorationColor: '#ff8e3c',
+              color:changeDarkLightColors('#0d0d0d','#fffffe'),
             }}
           >
             Categories:
-          </Typography>
+          </Box>
           <Box
             className={styles.category_links}
             sx={{
