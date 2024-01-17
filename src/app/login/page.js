@@ -11,8 +11,7 @@ import loginBackGround2 from "public/img/loginBackGround2.jpg";
 import Alert from "@mui/material/Alert";
 import Link from "next/link";
 import { FormWrapper } from "styles/login.style";
-import ChangeDarkLightColors from "@/utils/ChangeDarkLightColors";
-
+import ChangeDarkLightColors from "utils/ChangeDarkLightColors";
 export default function Login() {
   const userAuth = useSelector((state) => state.userAuth);
   const dispatch = useDispatch();
