@@ -9,6 +9,7 @@ import DensityMediumIcon from "@mui/icons-material/DensityMedium";
 import CircleIcon from "@mui/icons-material/Circle";
 import { NavBarMenuIconIndictor, ChangeIconColor } from "./navbar.style";
 import ChangeDarkLightColors from "utils/ChangeDarkLightColors";
+import DarkLightBtn from "components/DarkLightBtn/DarkLightBtn";
 const pages = [
   { name: "Home", href: "/" },
   { name: "Shooter", href: "/games/shooter" },
@@ -57,13 +58,15 @@ export default function NavBarDropMenu() {
           transition: "1s",
           "&:hover": {
             rotate: "90deg",
-            color: ChangeDarkLightColors('#EFF0F3','#000')
+            color: () => ChangeDarkLightColors('#EFF0F3','#000')
           },
         }}
         onClick={toggleDropMenu}
       >
-        <DensityMediumIcon />
+        <DensityMediumIcon onClick={((e) => e.preventDefault() )} />
       </Button>
+      <DarkLightBtn />
+
 
       {dropMenu ? (
         <>
@@ -100,7 +103,8 @@ export default function NavBarDropMenu() {
                       gap: 1,
                       "&:hover": {
                         textDecoration: `underline #ff8906 2px`,
-                        color: (() =>(ChangeDarkLightColors('#fffffe')))
+                        color: () => ChangeDarkLightColors('#fffffe'),
+                        bgcolor: () => ChangeDarkLightColors('','#000')
                       },
                     }}
                   >
@@ -142,8 +146,10 @@ export default function NavBarDropMenu() {
                         sx={{
                           transition: "0.5s",
                           borderRadius: 1,
+                          bgcolor:'none',
+                          textAlign:'center',
                           "&:hover": {
-                            bgcolor: "#2cb67d",
+                            bgcolor:'#ff8906'
                           },
                         }}
                       >
@@ -155,7 +161,6 @@ export default function NavBarDropMenu() {
                     <Typography
                       onClick={logoutAndRedirected}
                       sx={{
-                        mt: '20px',
                         cursor: "pointer",
                         borderRadius: 1,
                         transition: "0.5s",

@@ -9,7 +9,7 @@ import {
   Typography,
   MenuItem,
   Box,
-  Button
+  Button,
 } from "@mui/material";
 import BlurOnIcon from "@mui/icons-material/BlurOn";
 import Image from "next/image";
@@ -53,7 +53,7 @@ function Navbar({}) {
     dispatch(logoutReducer());
     router.push("/");
   };
-  
+
   useEffect(() => {
     const userFromLocal = JSON.parse(localStorage.getItem("user"));
     setUser(userFromLocal);
@@ -61,9 +61,13 @@ function Navbar({}) {
   }, [userAuth]);
   return (
     <AppBar
-      sx={{ position: "sticky", bgcolor: ChangeDarkLightColors('#0D0D0D') }}
+      sx={{
+        position: "sticky",
+        bgcolor: () => ChangeDarkLightColors("#0D0D0D"),
+      }}
       className={styles.main_nav}
     >
+      
       <Container
         maxWidth="xl"
         sx={{
@@ -84,7 +88,9 @@ function Navbar({}) {
             bottom: 0,
           }}
         >
-          <NavBarDropMenu />
+          <NavBarDropMenu darkbtn={DarkLightBtn} />
+         
+         
           <Typography
             variant="h6"
             noWrap
@@ -109,9 +115,9 @@ function Navbar({}) {
               gap: 1,
               position: "absolute",
               left: 120,
-              bgcolor: ChangeDarkLightColors("#232323", "#EFF0F3"),
+              bgcolor: () => ChangeDarkLightColors("#232323", "#EFF0F3"),
               ":hover": {
-                bgcolor: ChangeDarkLightColors("#232323", "#EFF0F3"),
+                bgcolor: () => ChangeDarkLightColors("#232323", "#EFF0F3"),
               },
             }}
           >
@@ -120,14 +126,14 @@ function Navbar({}) {
                 <Link href={page.href}>
                   <Box
                     sx={{
-                      color: ChangeDarkLightColors("#EFF0F3", "#000"),
+                      color: () => ChangeDarkLightColors("#EFF0F3", "#000"),
                       fontSize: { xs: 15, md: 19 },
                       transition: "0.8s",
                       borderRadius: 1,
                       "&:hover": {
                         textDecoration: "underline 2px",
                         textDecorationColor: "#ff8906",
-                        color: ChangeDarkLightColors("#fff", "#000"),
+                        color: () => ChangeDarkLightColors("#fff", "#000"),
                       },
                     }}
                   >
@@ -139,7 +145,7 @@ function Navbar({}) {
           </MenuItem>
         </Toolbar>
         <MenuItem
-        disableRipple
+          disableRipple
           sx={{
             // position: "block",
             float: "right",
@@ -148,11 +154,14 @@ function Navbar({}) {
             right: 0,
             // top: { xs: 10, sm: 5, md: 5 },
             "&:hover": {
-              bgcolor: ChangeDarkLightColors("#232323", "#EFF0F3"),
+              bgcolor: () => ChangeDarkLightColors("#232323", "#EFF0F3"),
             },
           }}
         >
-          <DarkLightBtn />
+          <Box mr={1} display={{ xs: "none", sm: "block" }}>
+            <DarkLightBtn />
+          </Box>
+
           {userInfo ? (
             <Box
               sx={{

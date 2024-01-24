@@ -6,6 +6,7 @@ import { Box } from "@mui/material";
 import Image from "next/image";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
 import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
+import ChangeDarkLightColors from "utils/ChangeDarkLightColors";
 const Thumbnail = ({ arr, image, index }) => {
   return (
     <div className="tumbnail">
@@ -23,7 +24,6 @@ const Thumbnail = ({ arr, image, index }) => {
 };
 
 export default function Slideshow({ imgs, sx }) {
-  console.log(imgs);
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -55,10 +55,10 @@ export default function Slideshow({ imgs, sx }) {
           <button onClick={prev}>
             <KeyboardDoubleArrowLeftIcon
               sx={{
-                color: "#2cb67d",
+                color: "#ff8906",
                 transition: "1s",
                 ":hover": {
-                  color: "#fffffe",
+                  color: () => ChangeDarkLightColors('#fffffe', '#000'),
                 },
               }}
             />
@@ -66,10 +66,10 @@ export default function Slideshow({ imgs, sx }) {
           <button onClick={next}>
             <KeyboardDoubleArrowRightIcon
               sx={{
-                color: "#2cb67d",
+                color: "#ff8906",
                 transition: "1s",
                 ":hover": {
-                  color: "#fffffe",
+                  color: () => ChangeDarkLightColors('#fffffe', '#000'),
                 },
               }}
             />

@@ -8,7 +8,7 @@ import mmorpgBackGround from "../../public/img/MmorpgBackGroundPaper.jpg";
 import shooterBackGround from "../../public/img/ShoterBackgroundPaper.jpg";
 import survivialBackGround from "../../public/img/SurvivalBackgroundPaper.jpg";
 import HomePageSlider from "components/homePageSlider/HomePageSlider";
-import changeDarkLightColors from 'utils/ChangeDarkLightColors'
+import ChangeDarkLightColors from "utils/ChangeDarkLightColors";
 
 const pages = [
   {
@@ -24,10 +24,10 @@ const pages = [
   },
 ];
 export default function Home() {
+
   return (
     <>
       <main>
-      
         <Box
           sx={{
             position: "relative",
@@ -42,24 +42,24 @@ export default function Home() {
             justifyContent: "center",
             flexDirection: "column",
             minHeight: "80vh",
-            color: '#fffffe'
+            color:"#ff8906",
           }}
         >
-          <Box>
-          <h2>
+          <Box fontSize={{xs: 20, md: 30}}>
             Find something new to play for free!
-          </h2>
           </Box>
           <HomePageSlider />
 
           <Box
             sx={{
-              fontSize: 30,
+              fontSize: {xs: 22, sm: 26, md: 30},
               position: 'relative',
+              p: 0.4,
+              mb: 1,
               top: 7,
-              textDecoration: "underline",
-              textDecorationColor: '#ff8e3c',
-              color:changeDarkLightColors('#0d0d0d','#fffffe'),
+              borderRadius: 3,
+              bgcolor: ChangeDarkLightColors('#222222','#EFF0F3'),
+              color: '#ff8906'
             }}
           >
             Categories:

@@ -7,7 +7,7 @@ import Navbar from '../../components/layout/navbar/navbar'
 import Provider from 'components/Provider'
 const archivo = Archivo_Narrow({ subsets: ['latin']})
 import { AppRouterCacheProvider } from "@mui/material-nextjs/build/v13-appRouter";
-
+import DarkLightBtn from 'components/DarkLightBtn/DarkLightBtn'
 export const metadata: Metadata = {
   title: 'Free to play games for PC',
   description: 'This site show you all the free to paly games that available for pc',

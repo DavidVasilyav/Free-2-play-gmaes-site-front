@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const initialState = {
-    darkOrLight: Boolean,
+    darkOrLight: false,
 }
 
 export const darkOrlightSlice = createSlice({
@@ -10,7 +10,6 @@ export const darkOrlightSlice = createSlice({
     reducers: {
         setTheme: (state, action) => {
             state.darkOrLight = action.payload
-            console.log(state.darkOrLight);
         }
     }
 })

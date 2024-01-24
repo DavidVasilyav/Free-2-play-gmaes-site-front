@@ -13,6 +13,7 @@ import { ProfileNavIndicator } from "styles/profileNav.style";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import Slide from "@mui/material/Slide";
 import { setCategory } from '../../redux/reducers/changeCategory'
+import ChangeDarkLightColors from 'utils/ChangeDarkLightColors';
 const navMenu = ["Profile", "Favorite-Games", "Edit Profile"];
 
 export default function ProfileNavBar(value) {
@@ -75,13 +76,15 @@ const navLinkChangeOnClick = async () => {
           sx={{
             width: "30vh",
             height: "80vh",
-            bgcolor: "#16161a",
+            bgcolor: () => ChangeDarkLightColors(),
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            borderRight: "2px solid #fffe",
+            borderRight: "2px solid",
+            borderRightColor: () => ChangeDarkLightColors('#fffe','#000'),
             p: 1,
             display: { xs: "flex", sm: "none" },
+            color: () => ChangeDarkLightColors('#fffe','#000')
           }}
         >
           <ArrowCircleRightIcon
@@ -95,7 +98,7 @@ const navLinkChangeOnClick = async () => {
               position: "absolute",
               left: 145,
               bottom: "50%",
-              color: "green",
+              color: "black",
               rotate: "180deg",
               bgcolor: "#ffffff",
               borderRadius: 5,
@@ -130,9 +133,10 @@ const navLinkChangeOnClick = async () => {
               setShowIcon(false);
             }}
             sx={{
+              display: {xs: 'block', sm:'none'},
               position: "absolute",
               bottom: "50%",
-              color: "green",
+              color: "black",
               bgcolor: "#ffffff",
               borderRadius: 5,
             }}

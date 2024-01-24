@@ -14,7 +14,7 @@ body {
   color: #fff;
   font-weight: 500;
   max-height: 100vh;
-  border: 4px solid #fffffe;
+  /* border: 4px solid #fffffe; */
   border-radius: 10px;
   display: table-cell;
 }
@@ -38,7 +38,7 @@ body {
   border: none;
   width: 10px;
   height: 10px;
-  background: #fff;
+  background: rgb(255, 255, 255, 0.8);
   border-radius: 50%;
   margin: 0 5px;
   padding: 5px;

@@ -24,6 +24,6 @@
       "@/*": ["./src/*"],
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/Provider.js", "components/Provider.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/Provider.js", "components/Provider.js", "src/app/layout.js", "components/layout/navbar/NavBarDropMenu.js", "components/layout/navbar/navbar.js", "components/SingleGame/SingleGame.js"],
   "exclude": ["node_modules"]
 }

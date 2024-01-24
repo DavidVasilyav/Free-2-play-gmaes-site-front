@@ -6,6 +6,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import changeDarkLightColors from "../../../utils/ChangeDarkLightColors";
+
 function Footer() {
   return (
     <Box
@@ -16,7 +17,7 @@ function Footer() {
         borderColor: "#ff8e3c",
         transition: "2s",
         display: "flex",
-        backgroundColor: changeDarkLightColors("", "#EFF0F3"),
+        backgroundColor: changeDarkLightColors("#232323", "#EFF0F3"),
       }}
     >
       <Box
@@ -27,6 +28,7 @@ function Footer() {
           pt: 3,
         }}
       >
+
         {/* <Link href={"https://www.instagram.com/david_vasilyav/?img_index=1"}>
           <InstagramIcon
             sx={{
@@ -41,6 +43,8 @@ function Footer() {
           <FacebookIcon
             sx={{
               transition: "1s",
+              color: "blue",
+
               "&:hover": {
                 color: "blue",
               },
@@ -50,6 +54,8 @@ function Footer() {
         <WhatsAppIcon
           sx={{
             transition: "1s",
+            color: "green",
+
             "&:hover": {
               color: "green",
             },
@@ -59,6 +65,8 @@ function Footer() {
           <LinkedInIcon
             sx={{
               transition: "1s",
+              color: "#180294ed",
+
               "&:hover": {
                 color: "#180294ed",
               },

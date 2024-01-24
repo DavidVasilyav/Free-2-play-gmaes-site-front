@@ -38,9 +38,6 @@ export const NavBarMenuIconIndictor = styled.nav`
 
     };
 
-&:hover {
-        background-color: ${(() => ChangeDarkLightColors('#000','#232323'))};
-    }
 
 
 `

@@ -6,31 +6,29 @@ import "./HomePageSlider.css";
 import { Box, Typography, CircularProgress } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-
+import ChangeDarkLightColors from "utils/ChangeDarkLightColors";
 
 export default function HomePageSlider() {
   const [games, setGames] = useState(null);
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const [loaded, setLoaded] = useState(false)
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [loaded, setLoaded] = useState(false);
   const [sliderRef, instanceRef] = useKeenSlider({
     initial: 0,
     slideChanged(slider) {
-      setCurrentSlide(slider.track.details.rel)
+      setCurrentSlide(slider.track.details.rel);
     },
     created() {
-      setLoaded(true)
+      setLoaded(true);
     },
-  })
+  });
 
-  
   useEffect(() => {
     async function fetchData() {
-        const data = await getGames();
-        if(data == Object.error) {
-          console.log('failed to catch');
-        } else
-        setLoaded(true)
-        return setGames(data);
+      const data = await getGames();
+      if (data == Object.error) {
+        console.log("failed to catch");
+      } else setLoaded(true);
+      return setGames(data);
     }
     fetchData();
   }, []);
@@ -39,114 +37,112 @@ export default function HomePageSlider() {
     <>
       {games ? (
         <>
-        <Box 
-        className='navigation-wrapper'
-        sx={{
-          width: { xs: '100%', sm: '50vh', md: '60vh',},
-          height: { xs: '300px', sm: '30vh', md: '35vh',},
-          display: 'grid',
-          borderRadius: '10px',
-        }}
-        >
-          <Box ref={sliderRef} className="keen-slider">
-            {games.map((game) => (
-              <>
-                <div className="keen-slider__slide the-slide">
-                  <Link href={game.game_url}>
-                    <Image
-                      alt="Loading.."
-                      src={game.thumbnail}
-                      // fill={true}
-                      layout="fill"
+          <Box
+            className="navigation-wrapper"
+            sx={{
+              width: { xs: "100%", sm: "50vh", md: "60vh" },
+              height: { xs: "300px", sm: "30vh", md: "35vh" },
+              display: "grid",
+            }}
+          >
+            <Box ref={sliderRef} className="keen-slider">
+              {games.map((game) => (
+                <>
+                  <div className="keen-slider__slide the-slide">
+                    <Link href={game.game_url}>
+                      <Image
+                        alt="Loading.."
+                        src={game.thumbnail}
+                        // fill={true}
+                        layout="fill"
                       ></Image>
-                  </Link>
-                </div>
+                    </Link>
+                  </div>
+                </>
+              ))}
+            </Box>
+            {loaded && instanceRef.current && (
+              <>
+                <Arrow
+                  left
+                  onClick={(e) =>
+                    e.stopPropagation() || instanceRef.current?.prev()
+                  }
+                  disabled={currentSlide === 0}
+                />
+
+                <Arrow
+                  onClick={(e) =>
+                    e.stopPropagation() || instanceRef.current?.next()
+                  }
+                  disabled={
+                    currentSlide ===
+                    instanceRef.current.track.details.slides.length - 1
+                  }
+                />
               </>
-            ))}
-            
+            )}
           </Box>
           {loaded && instanceRef.current && (
-            <>
-            <Arrow
-              left
-              onClick={(e) =>
-                e.stopPropagation() || instanceRef.current?.prev()
-              }
-              disabled={currentSlide === 0}
-              />
-
-            <Arrow
-              onClick={(e) =>
-                e.stopPropagation() || instanceRef.current?.next()
-              }
-              disabled={
-                currentSlide ===
-                instanceRef.current.track.details.slides.length - 1
-              }
-              />
-          </>
-        )}
-        </Box>
-        {loaded && instanceRef.current && (
-          <div className="dots">
-            {[
-              ...Array(instanceRef.current.track.details.slides.length).keys(),
-            ].map((idx) => {
-              return (
-                <button
-                key={idx}
-                onClick={() => {
-                  instanceRef.current?.moveToIdx(idx)
-                }}
-                className={"dot" + (currentSlide === idx ? " active" : "")}
-                ></button>
-                )
+            <div className="dots">
+              {[
+                ...Array(
+                  instanceRef.current.track.details.slides.length
+                ).keys(),
+              ].map((idx) => {
+                return (
+                  <button
+                    key={idx}
+                    onClick={() => {
+                      instanceRef.current?.moveToIdx(idx);
+                    }}
+                    className={"dot" + (currentSlide === idx ? " active" : "")}
+                  ></button>
+                );
               })}
-          </div>
-        )}
+            </div>
+          )}
         </>
-        
       ) : (
-        <Box 
-        className='navigation-wrapper'
-        sx={{
-          width: { xs: '100%', sm: '60%', md: '45%'},
-          height: { xs: '250px', sm: '250px', md: '350px'},
-          mb:{xs: 15, sm: 1},
-          border: '2px solid white',
-          display: "flex",
-          alignItems: "center",
-        }}
+        <Box
+          className="navigation-wrapper"
+          sx={{
+            width: { xs: "100%", sm: "60%", md: "45%" },
+            height: { xs: "250px", sm: "250px", md: "350px" },
+            mb: { xs: 15, sm: 1 },
+            border: "3px solid",
+            borderColor: () => ChangeDarkLightColors(),
+            display: "flex",
+            alignItems: "center",
+            bgcolor: "black",
+          }}
         >
-
-        <div ref={sliderRef} className="keen-slider">
-          <div className="keen-slider__slide number-slide1">
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-                textAlign: 'center'
-                
-              }}
-            >
-              <CircularProgress sx={{ color: "#fffffe" }} />
-              <Typography variant="h4" sx={{ ml: 3 }}>
-                Loading...
-              </Typography>
-            </Box>
+          <div ref={sliderRef} className="keen-slider">
+            <div className="keen-slider__slide number-slide1">
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  textAlign: "center",
+                }}
+              >
+                <CircularProgress sx={{ color: "#fffffe" }} />
+                <Typography variant="h4" sx={{ ml: 3 }}>
+                  Loading...
+                </Typography>
+              </Box>
+            </div>
           </div>
-        </div>
         </Box>
       )}
-      
     </>
   );
 }
 
 function Arrow(props) {
-  const disabeld = props.disabled ? " arrow--disabled" : ""
+  const disabeld = props.disabled ? " arrow--disabled" : "";
   return (
     <svg
       onClick={props.onClick}
@@ -163,5 +159,5 @@ function Arrow(props) {
         <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
       )}
     </svg>
-  )
+  );
 }

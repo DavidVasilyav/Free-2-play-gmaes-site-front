@@ -1,5 +1,5 @@
 import { GlobalTextFieldStyled } from "./GlobalTextFieldStyle";
-
+import ChangeDarkLightColors from "utils/ChangeDarkLightColors";
 // --backgroundColor: #16161a;
 //   --paragraph: #94a1b2;
 //   --btn_text: #fffffe;
@@ -17,29 +17,32 @@ export default function GlobalTextField({
   select,
   option,
   inputProps,
+  sx
 })
 {
+console.log(sx);
+
   return (
       <GlobalTextFieldStyled
       InputLabelProps={{style : {color : '#ff8906'} }}
       sx={{
-        "& .MuiInputBase-input":{ backgroundColor: '#16161a', color: '#fffffe', border: 'none', borderRadius: 1 },
+        "& .MuiInputBase-input":{ backgroundColor: () => ChangeDarkLightColors("", ""), color: () => ChangeDarkLightColors("#fffffe", '#0f0e17'), border: 'none', borderRadius: 1 },
         "& .MuiInputLabel-root": {color: '#ff8906'},
         "& .MuiOutlinedInput-root": {
-          color: 'black',
+          color: () => ChangeDarkLightColors(),
           '&.Mui-focused input': {
-            color: '#fffffe',
+            color: () => ChangeDarkLightColors("#fffffe", "#0f0e17"),
           },
           '&.Mui-focused fieldset': {
-            color: '#fffffe',
+            color: () => ChangeDarkLightColors("#fffffe", '#0f0e17'),
             borderColor: '#ff8906',
           },
         },
         "& .label.Mui-focused": {
-          color:'#fff'
+          color: () => ChangeDarkLightColors("#fffffe", '#0f0e17')
         },
         "&MuiSvgIcon-root":{
-          color:'#fff'
+          color:() => ChangeDarkLightColors("#fffffe", '#0f0e17')
         }
         
       }}

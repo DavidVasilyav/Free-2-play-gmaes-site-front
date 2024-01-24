@@ -21,7 +21,7 @@ import GlobalTextField from "components/textFiled/GlobalTextField";
 import backgroundImageRegister from "public/img/registerBackGround.jpg";
 import { registerUser, loginUser, restSlice } from "redux/reducers/userAuthReducer";
 import Loading from "components/Loading/Loading";
-
+import ChangeDarkLightColors from "utils/ChangeDarkLightColors";
 export default function Register() {
   const userAuth = useSelector((state) => state.userAuth);
   const dispatch = useDispatch();
@@ -157,10 +157,10 @@ export default function Register() {
               InputLabelProps={{ style: { color: "#ff8906" } }}
               sx={{
                 width: 222.2,
-                bgcolor: "#16161a",
+                bgcolor: () => ChangeDarkLightColors('#0D0D0D', '#EFF0F3'),
                 "& .MuiInputBase-input": {
-                  backgroundColor: "#16161a",
-                  color: "#fffffe",
+                  backgroundColor: () => ChangeDarkLightColors("#0D0D0D", '#EFF0F3'),
+                  color: () => ChangeDarkLightColors("#fffffe", '#16161a'),
                   border: "none",
                   borderRadius: 1,
                 },
@@ -168,7 +168,7 @@ export default function Register() {
                 "& .MuiOutlinedInput-root": {
                   color: "black",
                   "&.Mui-focused input": {
-                    color: "#fffffe",
+                    color: () => ChangeDarkLightColors("#fffffe", '#16161a'),
                   },
                   "&.Mui-focused fieldset": {
                     color: "#fffffe",
@@ -178,9 +178,7 @@ export default function Register() {
                 "& .label.Mui-focused": {
                   color: "#fff",
                 },
-                "&MuiSvgIcon-root": {
-                  color: "#fff",
-                },
+                
               }}
               type={showPassword ? "text" : "password"}
               InputProps={{
@@ -188,7 +186,7 @@ export default function Register() {
                   <InputAdornment position="end">
                     <IconButton
                       sx={{
-                        color: "white",
+                        color: () => ChangeDarkLightColors("#fffffe", '#16161a'),
                       }}
                       aria-label="toggle password visibility"
                       onClick={handleClickShowPassword}
@@ -209,11 +207,11 @@ export default function Register() {
               required={true}
               InputLabelProps={{ style: { color: "#ff8906" } }}
               sx={{
-                width: 222.2,
-                bgcolor: "#16161a",
+               width: 222.2,
+                bgcolor: () => ChangeDarkLightColors('#0D0D0D', '#EFF0F3'),
                 "& .MuiInputBase-input": {
-                  backgroundColor: "#16161a",
-                  color: "#fffffe",
+                  backgroundColor: () => ChangeDarkLightColors("#0D0D0D", '#EFF0F3'),
+                  color: () => ChangeDarkLightColors("#fffffe", '#16161a'),
                   border: "none",
                   borderRadius: 1,
                 },
@@ -221,7 +219,7 @@ export default function Register() {
                 "& .MuiOutlinedInput-root": {
                   color: "black",
                   "&.Mui-focused input": {
-                    color: "#fffffe",
+                    color: () => ChangeDarkLightColors("#fffffe", '#16161a'),
                   },
                   "&.Mui-focused fieldset": {
                     color: "#fffffe",
@@ -231,16 +229,13 @@ export default function Register() {
                 "& .label.Mui-focused": {
                   color: "#fff",
                 },
-                "&MuiSvgIcon-root": {
-                  color: "#fff",
-                },
               }}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
                     <IconButton
                       sx={{
-                        color: "white",
+                        color: () => ChangeDarkLightColors("#fffffe", '#16161a'),
                       }}
                       aria-label="toggle password visibility"
                       onClick={handleClickShowPassword}

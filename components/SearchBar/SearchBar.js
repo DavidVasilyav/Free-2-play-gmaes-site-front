@@ -14,56 +14,14 @@ import {
 import GamesContainer from "../../components/GamesContainer/GamesContainer";
 import Select from "@mui/material/Select";
 import GlobalTextField from "../textFiled/GlobalTextField";
-
-const sortBy = ["Abc", "Release-date"];
-
-// const Search = styled("div")(({ theme }) => ({
-//   position: "relative",
-//   borderRadius: theme.shape.borderRadius,
-//   backgroundColor: alpha(theme.palette.common.black, 0.15),
-//   "&:hover": {
-//     backgroundColor: alpha(theme.palette.common.white, 0.25),
-//   },
-//   marginLeft: 0,
-//   width: "100%",
-//   [theme.breakpoints.up("sm")]: {
-//     marginLeft: theme.spacing(1),
-//     width: "auto",
-//   },
-// }));
-
-// const SearchIconWrapper = styled("div")(({ theme }) => ({
-//   padding: theme.spacing(0, 2),
-//   height: "100%",
-//   position: "absolute",
-//   pointerEvents: "none",
-//   display: "flex",
-//   alignItems: "center",
-//   justifyContent: "center",
-// }));
-
-// const StyledInputBase = styled(InputBase)(({ theme }) => ({
-//   color: "inherit",
-//   "& .MuiInputBase-input": {
-//     padding: theme.spacing(1, 1, 1, 0),
-//     // vertical padding + font size from searchIcon
-//     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-//     transition: theme.transitions.create("width"),
-//     width: "100%",
-//     [theme.breakpoints.up("sm")]: {
-//       width: "12ch",
-//       "&:focus": {
-//         width: "20ch",
-//       },
-//     },
-//   },
-// }));
+import ChangeDarkLightColors from "utils/ChangeDarkLightColors";
 
 export default function SearchBar({ listFromApi, searchResult }) {
   const [search, setSearch] = useState(listFromApi);
   const [searchInput, setSearchInput] = useState([]);
   const [gameList, setGameList] = useState(listFromApi);
   const [sortInput, setSortInput] = useState("Abc");
+  const sortBy = ["Abc", "Release-date"];
   const SortGames = (filterArgument) => {
     gameList.sort((a, b) => {
       const nameA = a[filterArgument].toUpperCase();
@@ -117,6 +75,7 @@ export default function SearchBar({ listFromApi, searchResult }) {
       <Box>
         <FormControl variant="filled"
         sx={{
+          bgcolor: () => ChangeDarkLightColors("", "#EFF0F3"),
           position: 'sticky',
           display: 'flex',
           flexDirection: 'row',
@@ -124,7 +83,6 @@ export default function SearchBar({ listFromApi, searchResult }) {
           padding: 1,
           gap: 1,
           mb: 1,
-          bgcolor: '#242629',
           borderBottom: '2px solid #ff8906'
          
         }}>

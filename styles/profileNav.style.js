@@ -5,7 +5,7 @@ export const ProfileNavIndicator = styled.nav`
         active ? 'underline' : 'none'
     };
     border-left: ${({ active }) =>
-        active ? '2px solid #2cb67d' : 'none'    
+        active ? '2px solid #ff8906' : 'none'    
     };
     height: 50px;
     width: 140px;

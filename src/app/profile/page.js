@@ -26,7 +26,8 @@ import {
 import { setCategory } from "redux/reducers/changeCategory";
 import { EditUserInfo } from "services/authService";
 const navMenu = ["Profile", "Favorite-Games", "Edit Profile"];
- let _id
+import ChangeDarkLightColors from "utils/ChangeDarkLightColors";
+let _id;
 
 export default function MyProfile() {
   // const [displayData, setDisplayData] = useState({
@@ -52,7 +53,7 @@ export default function MyProfile() {
     username: "",
     email: "",
     age: 0,
-    _id: _id
+    _id: _id,
   });
   // const userFromLocalStorage = JSON.parse(localStorage.getItem('user'))
   const getValue = (e) => {
@@ -105,14 +106,13 @@ export default function MyProfile() {
   }
 
   const updateUsername = (e) => {
-    let username = e.target.value
-    setInputs((inputs) => inputs.username == username )
-  }
+    let username = e.target.value;
+    setInputs((inputs) => inputs.username == username);
+  };
 
   const updateUsernameBtn = () => {
-    EditUserInfo({_id: _id,username: inputs.username})
-
-  }
+    EditUserInfo({ _id: _id, username: inputs.username });
+  };
   useEffect(() => {
     if (!localStorage.getItem("token")) {
       router.push("/");
@@ -120,14 +120,19 @@ export default function MyProfile() {
       const userFromLocal = JSON.parse(localStorage.getItem("user"));
       setUser(userFromLocal);
       setUserFavoriteList(userAuth.favoriteList);
-     _id = JSON.parse(localStorage.getItem("user")).userId || 0;
+      _id = JSON.parse(localStorage.getItem("user")).userId || 0;
     }
     navLinkChangeOnClick();
   }, [userAuth, theValue, profileState, userFavoriteList]);
   return (
     <>
       <Box
-        sx={{ display: "flex", bgcolor: "", color: "#fffe", height: "80vh" }}
+        sx={{
+          display: "flex",
+          bgcolor: () => ChangeDarkLightColors("", "#EFF0F3"),
+          color: "#fffe",
+          height: "80vh",
+        }}
       >
         <ProfileNavBar value={profileState} />
         <Box
@@ -135,13 +140,14 @@ export default function MyProfile() {
           sx={{
             width: "30vh",
             height: "80vh",
-            bgcolor: "#16161a",
+            bgcolor: () => ChangeDarkLightColors("", "#EFF0F3"),
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            borderRight: "2px solid #fffe",
+            borderRight: "2px solid #ff8906",
             p: 1,
             display: { xs: "none", sm: "flex" },
+            color: () => ChangeDarkLightColors("#EFF0F3", "#0f0e17"),
           }}
         >
           <Avatar
@@ -152,6 +158,7 @@ export default function MyProfile() {
           {navMenu.map((item) => (
             <ProfileNavIndicator key={item} active={indicator === item}>
               <List
+                color="red"
                 data-value={item}
                 value={item}
                 onClick={() => {
@@ -177,15 +184,10 @@ export default function MyProfile() {
             flexDirection: "column",
             width: "100%",
             height: "fill",
+            bgcolor: () => ChangeDarkLightColors("", "#EFF0F3"),
+            color: () => ChangeDarkLightColors("#EFF0F3", "#0f0e17"),
           }}
         >
-          <Box
-            id="profile-head"
-            sx={{
-              width: "100%",
-              bgcolor: "#16161a",
-            }}
-          >
             <Typography
               sx={{
                 display: "flex",
@@ -194,13 +196,13 @@ export default function MyProfile() {
             >
               {user.username}
             </Typography>
-          </Box>
           <Box
             id="info-box"
             sx={{
-              backgroundColor: "#16161a",
+              bgcolor: () => ChangeDarkLightColors("", "#EFF0F3"),
+              color: () => ChangeDarkLightColors("#EFF0F3", "#0f0e17"),
               height: "80vh",
-              borderTop: "2px solid #2cb67d",
+              borderTop: "2px solid #ff8906",
             }}
           >
             <Box id="display-profile">
@@ -211,7 +213,6 @@ export default function MyProfile() {
                   <Box
                     id="profile-body"
                     sx={{
-                      bgcolor: "#16161a",
                       display: "flex",
                       justifyContent: "center",
                       textAlign: "center",
@@ -248,17 +249,19 @@ export default function MyProfile() {
               ) : (
                 <>
                   {listEmpty ? (
-                    <Box sx={{
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      
-                    }}>
-                      <Box sx={{
-                        mt: 5
-                      }}>
-                      List is empty
-
+                    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          mt: 5,
+                        }}
+                      >
+                        List is empty
                       </Box>
                     </Box>
                   ) : (
@@ -269,13 +272,15 @@ export default function MyProfile() {
                             <ListItemButton
                               key={game.game_id}
                               sx={{
-                                bgcolor: "#242629",
-                                color: "#94a1b2",
+                                bgcolor: "#ff8906",
+                                color: ()=> ChangeDarkLightColors('#000', '#fffffe'),
                                 "&:hover": {
-                                  borderBottom: "2px solid #2cb67d",
-                                  borderTop: "2px solid #2cb67d",
-                                  bgcolor: "#16161a",
-                                  color: "#2cb67d",
+                                  borderBottom: "2px solid #000",
+                                  borderTop: `2px solid`,
+                                  borderTopColor:()=> ChangeDarkLightColors('#fffffe', '#000') ,
+                                  borderBottomColor:()=> ChangeDarkLightColors('#fffffe', '#000') ,
+                                  bgcolor: ()=> ChangeDarkLightColors('#000', '#fffffe'),
+                                  color: "#ff8906",
                                   textDecoration: "underline",
                                   padding: 1,
                                 },
@@ -302,7 +307,7 @@ export default function MyProfile() {
                                 aria-label="delete"
                                 sx={{
                                   transition: "1s",
-                                  color: "#7f5af0",
+                                  color: "#000",
                                   "&:hover": {
                                     color: "red",
                                   },
@@ -323,9 +328,17 @@ export default function MyProfile() {
               {displayEdit ? (
                 <></>
               ) : (
-                <Box sx={{ bgcolor: "#fffe", p: 1 }} onChange={getValue}>
-                  <GlobalTextField onChange={updateUsername} name="username" label="username"/>
-                  <GlobalButton value={inputs.username}  text='update' onClick={updateUsernameBtn}/>
+                <Box sx={{ p: 1 }} onChange={getValue}>
+                  <GlobalTextField
+                    onChange={updateUsername}
+                    name="username"
+                    label="username"
+                  />
+                  <GlobalButton
+                    value={inputs.username}
+                    text="update"
+                    onClick={updateUsernameBtn}
+                  />
                   <GlobalTextField name="email" label="email" />
                   <GlobalTextField name="age" label="age" />
                 </Box>
